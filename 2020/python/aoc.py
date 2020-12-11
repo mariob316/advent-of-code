@@ -6,7 +6,7 @@ class AOC():
 
     def __init__(self) -> None:
         self.input = []
-        self.session = "***REMOVED***"
+        self.session = ""
         self.download_input()
         
     
