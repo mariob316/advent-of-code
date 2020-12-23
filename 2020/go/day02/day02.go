@@ -2,20 +2,64 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 
 	"github.com/stradigi-mario-bruno/advent-of-code/2020/go/utils"
 )
 
 func main() {
 	input := utils.ReadInput("../../input/day02.txt")
-	fmt.Println(part1(input))
-	fmt.Println(part2(input))
+	passwords := parse(input)
+	fmt.Println(part1(passwords))
+	fmt.Println(part2(passwords))
 }
 
-func part1(input []string) int {
-	return 0
+type password struct {
+	password string
+	letter   string
+	min      int
+	max      int
 }
 
-func part2(input []string) int {
-	return 0
+func parse(input []string) []password {
+	passwords := []password{}
+	for _, i := range input {
+		split := strings.Split(i, ":")
+		rule := strings.Split(split[0], " ")
+		min, _ := strconv.Atoi(strings.Split(rule[0], "-")[0])
+		max, _ := strconv.Atoi(strings.Split(rule[0], "-")[1])
+		letter := rule[1]
+		p := password{
+			password: strings.TrimSpace(split[1]),
+			letter:   letter,
+			min:      min,
+			max:      max,
+		}
+		passwords = append(passwords, p)
+	}
+	return passwords
+}
+
+func part1(input []password) int {
+	nbrValid := 0
+	for _, p := range input {
+		count := strings.Count(p.password, p.letter)
+		if count >= p.min && count <= p.max {
+			nbrValid++
+		}
+	}
+	return nbrValid
+}
+
+func part2(input []password) int {
+	nbrValid := 0
+	for _, p := range input {
+		first := p.password[p.min-1] == p.letter[0]
+		second := p.password[p.max-1] == p.letter[0]
+		if first != second {
+			nbrValid++
+		}
+	}
+	return nbrValid
 }
