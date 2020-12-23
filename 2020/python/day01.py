@@ -18,7 +18,7 @@ def part2():
         j = i + 1
         for j in report:
             if (2020 - i - j) in report:
-                return i * j * (2020 - i - j);
+                return i * j * (2020 - i - j)
 
 if __name__ == '__main__':
     print(part1())

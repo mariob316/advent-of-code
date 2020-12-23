@@ -1,0 +1,1 @@
+module github.com/stradigi-mario-bruno/advent-of-code/2020/go/utils

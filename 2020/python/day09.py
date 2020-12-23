@@ -4,7 +4,7 @@ p = pathlib.Path(__file__).parent.parent.joinpath("input")
 with open(f'{p / pathlib.Path(__file__).stem}.txt', "r") as f:
     input = [int(f) for f in f.read().splitlines()]
         
-perm = 5
+perm = 25
 
 def part1():
     window = input[:perm]
