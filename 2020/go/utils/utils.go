@@ -2,8 +2,10 @@ package utils
 
 import (
 	"io/ioutil"
+	"log"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func ReadInput(fileName string) []string {
@@ -43,4 +45,9 @@ func ReadInputInt(fileName string) []int {
 		i = append(i, num)
 	}
 	return i
+}
+
+func TimeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
 }

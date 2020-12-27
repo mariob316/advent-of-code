@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/stradigi-mario-bruno/advent-of-code/2020/go/utils"
 )
@@ -42,6 +43,7 @@ func parse(input []string) []password {
 }
 
 func part1(input []password) int {
+	defer utils.TimeTrack(time.Now(), "part1")
 	nbrValid := 0
 	for _, p := range input {
 		count := strings.Count(p.password, p.letter)
@@ -53,6 +55,7 @@ func part1(input []password) int {
 }
 
 func part2(input []password) int {
+	defer utils.TimeTrack(time.Now(), "part2")
 	nbrValid := 0
 	for _, p := range input {
 		first := p.password[p.min-1] == p.letter[0]

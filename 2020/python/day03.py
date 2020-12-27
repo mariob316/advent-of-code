@@ -1,6 +1,7 @@
 import pathlib
 
-with open(f"input/{pathlib.Path(__file__).stem}.txt", "r") as f:
+p = pathlib.Path(__file__).parent.parent.joinpath("input")
+with open(f'{p / pathlib.Path(__file__).stem}.txt', "r") as f:
     input = f.read().splitlines()
 
 

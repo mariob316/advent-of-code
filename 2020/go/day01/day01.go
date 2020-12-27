@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/stradigi-mario-bruno/advent-of-code/2020/go/utils"
 )
@@ -13,6 +14,7 @@ func main() {
 }
 
 func part1(input map[int]bool) int {
+	defer utils.TimeTrack(time.Now(), "part1")
 	for i := range input {
 		x := 2020 - i
 		if input[x] {
@@ -23,6 +25,7 @@ func part1(input map[int]bool) int {
 }
 
 func part2(input map[int]bool) int {
+	defer utils.TimeTrack(time.Now(), "part2")
 	for i := range input {
 		for j := range input {
 			x := 2020 - i - j
