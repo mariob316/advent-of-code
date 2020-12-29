@@ -9,12 +9,16 @@ import (
 )
 
 func ReadInput(fileName string) []string {
+	return ReadInputWithDelim(fileName, "\n")
+}
+
+func ReadInputWithDelim(fileName string, delim string) []string {
 	data, err := ioutil.ReadFile(fileName)
 	if err != nil {
 		return nil
 	}
 
-	lines := strings.Split(string(data), "\n")
+	lines := strings.Split(string(data), delim)
 	var i []string
 	for _, line := range lines {
 		if len(line) == 0 {
@@ -26,12 +30,16 @@ func ReadInput(fileName string) []string {
 }
 
 func ReadInputInt(fileName string) []int {
+	return ReadInputIntWithDelim(fileName, "\n")
+}
+
+func ReadInputIntWithDelim(fileName string, delim string) []int {
 	data, err := ioutil.ReadFile(fileName)
 	if err != nil {
 		return nil
 	}
 
-	lines := strings.Split(string(data), "\n")
+	lines := strings.Split(string(data), delim)
 	var i []int
 	for _, line := range lines {
 		if len(line) == 0 {
